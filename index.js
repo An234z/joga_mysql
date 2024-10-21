@@ -14,6 +14,8 @@ app.engine('hbs', hbs.engine({
     layoutsDir: __dirname + '/views/layouts',
 }))  
 
+app.use(express.static('public')); 
+
 const mysql = require('mysql')
 
 const bodyParser = require('body-parser')
@@ -24,7 +26,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "qwerty",
-    database: 'joga_mysql'
+    database: 'joga_mysql',
 })
 
 con.connect(function(err) {
