@@ -39,9 +39,24 @@ con.connect(function(err) {
    if (err) throw err;
    console.log('Connected to joga_mysql db');
 });
-
-
 app.get('/', (req, res) => {
+    let query = `
+        SELECT article.*, author.name AS author_name 
+        FROM article 
+        JOIN author ON article.author_id = author.id
+    `;
+    con.query(query, (err, result) => {
+        if (err) throw err;
+        res.render('index', {
+            title: 'Homepage',
+            subtitle: 'Yoga Blog',
+            articles: result
+        });
+    });
+});
+
+
+/*app.get('/', (req, res) => {
    let query = "SELECT * FROM article";
    let articles = []
    con.query(query, (err, result) => {
@@ -69,8 +84,21 @@ app.get('/article/:slug', (req, res) => {
            article: article
        })
    });
+}); */
+app.get('/article/:slug', (req, res) => {
+    let query = `SELECT article.*, author.name AS author_name FROM article 
+                 LEFT JOIN author ON article.author_id = author.id 
+                 WHERE article.slug="${req.params.slug}"`;
+    
+    con.query(query, (err, result) => {
+        if (err) throw err;
+        const article = result[0]; // eeldame, et saame ainult ühe artikli
+        console.log(article); // see peaks näitama artikli andmeid koos autori nimega
+        res.render('article', {
+            article: article
+        });
+    });
 });
-
 
 app.listen(3004, () => {
    console.log('App is started at http://localhost:3004');
