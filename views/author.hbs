@@ -1,0 +1,19 @@
+<h1>Author: {{author.name}}</h1>
+
+<ul>
+    {{#each articles}}
+    <li>
+        <a href="/article/{{slug}}">
+            <img src="/images/{{image}}" alt="{{name}}" />
+            <h2>{{name}}</h2>
+            <!-- Eemaldatud "Published" rida -->
+        </a>
+    </li>
+    {{/each}}
+</ul>
+
+
+
+
+
+
