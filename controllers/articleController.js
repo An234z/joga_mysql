@@ -1,5 +1,4 @@
-// controllers/articleController.js
-const con = require('../utils/db'); // Import the shared connection
+const con = require('../utils/db'); 
 
 const getAllArticles = (req, res) => {
     const query = `
