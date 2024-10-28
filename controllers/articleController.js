@@ -15,7 +15,6 @@ const getAllArticles = (req, res) => {
         });
     });
 };
-
 const getArticleBySlug = (req, res) => {
     const query = `
         SELECT article.*, author.name AS author_name
