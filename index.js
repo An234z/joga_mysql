@@ -34,11 +34,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Import routers
 const articleRouter = require('./routes/article');
-const authorRouter = require('./routes/author');  // Add this line for the author router
+const authorRouter = require('./routes/author');  
 
 // Use routers
 app.use('/', articleRouter);
-app.use('/author', authorRouter);  // Add this line to handle all /author routes
+app.use('/author', authorRouter); 
 
 // Start server
 const PORT = 3004; 
