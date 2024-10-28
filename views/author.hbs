@@ -1,18 +1,13 @@
-<h1>Author: {{author.name}}</h1>
+<h1>{{title}}</h1>
+<h2>{{author.name}}</h2>
+<p>Articles by {{author.name}}</p>
 
 <ul>
     {{#each articles}}
-    <li>
-        <a href="/article/{{slug}}">
-            <img src="/images/{{image}}" alt="{{name}}" />
-            <h2>{{name}}</h2>
-        </a>
-    </li>
+        <li>
+            <a href="/article/{{slug}}">{{name}}</a> - {{published_date}}
+        </li>
+    {{else}}
+        <p>No articles found for this author.</p>
     {{/each}}
 </ul>
-
-
-
-
-
-
