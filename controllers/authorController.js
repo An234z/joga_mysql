@@ -1,5 +1,4 @@
-// controllers/authorController.js
-const con = require('../utils/db'); // Import the shared connection
+const con = require('../utils/db'); 
 
 const getAuthorArticles = (req, res) => {
     const authorId = req.params.author_id;
